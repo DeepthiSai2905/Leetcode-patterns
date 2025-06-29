@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 /*
 https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/description/
 https://www.geeksforgeeks.org/dsa/find-position-element-sorted-array-infinite-numbers/
