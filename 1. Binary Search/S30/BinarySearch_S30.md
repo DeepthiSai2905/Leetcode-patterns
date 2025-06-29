@@ -1,4 +1,4 @@
-Round 1
+### Round 1
 
 1. Search in Rotated Sorted Array
 2. Search in a Sorted Array of Unknown Size
@@ -7,7 +7,7 @@ Round 1
 5. Find Minimum in Rotated Sorted Array
 6. Find Peak Element
 
-Round 2:
+### Round 2:
 
 1. Pow(x, n)
 2. Find K Closest Elements
