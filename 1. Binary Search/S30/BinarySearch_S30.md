@@ -11,7 +11,7 @@
 
 1. Pow(x, n)
 2. Find K Closest Elements
-3. Optimize Air Routes
-4. H-Index II
+3. Optimize Air Routes - not done
+4. H-Index II - not done
 5. Intersection of Two Arrays II
 6. Median of Two Sorted Arrays
