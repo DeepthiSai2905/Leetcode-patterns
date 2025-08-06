@@ -117,4 +117,42 @@ Node* clone(Node* node,unordered_map<Node*,Node*>&mp){
 
 // Approach 3: O(1) space, core idea is to keep clone nodes next to original nodes
 
+Node* copyRandomList(Node* head) {
+    if (!head) return nullptr;
+
+    Node* curr = head;
+    // Step 1: Clone nodes and place them next to original nodes
+    while (curr) {
+        Node* cloneNode = new Node(curr->val);
+        cloneNode->next = curr->next;
+        curr->next = cloneNode;
+        curr = cloneNode->next;
+    }
+
+    // Step 2: Set random pointers for cloned nodes
+    curr = head;
+    while (curr) {
+        if (curr->random) {
+            curr->next->random = curr->random->next; // point to the cloned node
+        }
+        curr = curr->next->next; // move to the next original node
+    }
+
+    // Step 3: Separate the cloned list from the original list
+    curr = head;
+    Node* copyHead = head->next; // The head of the copied list
+    Node* copyCurr = copyHead;
+
+    while (curr) {
+        curr->next = curr->next->next; // restore original list's next pointers
+        if (copyCurr->next) {
+            copyCurr->next = copyCurr->next->next; // set next for copied nodes
+        }
+        curr = curr->next;
+        copyCurr = copyCurr->next;
+    }
+
+    return copyHead;
+}
+
 
