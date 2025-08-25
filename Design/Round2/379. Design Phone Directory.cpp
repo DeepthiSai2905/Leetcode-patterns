@@ -22,7 +22,7 @@ public:
         }
     }
     
-    int get() {
+    int get() { // here is the catch
         if(hs.empty()) return -1;
         auto itr = hs.begin();
         int ans = *itr;

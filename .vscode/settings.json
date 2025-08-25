@@ -4,6 +4,9 @@
         "variant": "cpp",
         "chrono": "cpp",
         "iosfwd": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "bitset": "cpp",
+        "__hash_table": "cpp",
+        "unordered_map": "cpp"
     }
 }
