@@ -25,6 +25,45 @@ Output: []
 3. WHAT IF TWO NODES HAVE SAME ROW AND COLUMN? SORT BY VALUE
 4. WHAT IF THE TREE IS EMPTY? RETURN EMPTY ARRAY
 */
+
+
+// BFS - by default natural choice to get order from left to right in every level
+vector<vector<int>> verticalOrder(TreeNode* root) {
+        if(!root) return {};
+        map<int,vector<int>>mp;
+        vector<vector<int>>result;
+        queue<pair<int, TreeNode*>>q;
+        int minCol=0, maxCol=0;
+        q.push({0,root});
+        while(!q.empty()){
+            auto node=q.front(); q.pop();
+            int col=node.first;
+            minCol=min(minCol,col);
+            maxCol=max(maxCol,col);
+            TreeNode* curr = node.second;
+            mp[col].push_back(curr->val);
+            if(curr->left){
+                q.push({col-1,curr->left});
+            }
+            if(curr->right){
+                q.push({col+1,curr->right});
+            }
+        }
+        // map O(nlogk+k) k-> distinct columns
+        for(auto node: mp){
+            result.push_back(node.second);
+        }
+        // unordered_map O(n+k)
+        // for(int i=minCol;i<=maxCol;i++){
+        //     result.push_back(mp[i]);
+        // }
+        return result;
+    }
+// here insertion in map - O(logn) we can use unordered_map but then we need to find min and max column to iterate in order
+
+
+
+
 // here row is required as we need to maintain order at same column 
 // in DFS, depth is fine maintained but row is not maintained, so we need to pass row as well
 void dfs(TreeNode* root, int row, int col, map<int,vector<pair<int,int>>>&mp){
@@ -52,28 +91,3 @@ void dfs(TreeNode* root, int row, int col, map<int,vector<pair<int,int>>>&mp){
         return result;
     }
 
-// BFS - by default natural choice to get order from left to right in every level
-vector<vector<int>> verticalOrder(TreeNode* root) {
-        if(!root) return {};
-        map<int,vector<int>>mp;
-        vector<vector<int>>result;
-        queue<pair<int, TreeNode*>>q;
-        q.push({0,root});
-        while(!q.empty()){
-            auto node=q.front(); q.pop();
-            int col=node.first;
-            TreeNode* curr = node.second;
-            mp[col].push_back(curr->val);
-            if(curr->left){
-                q.push({col-1,curr->left});
-            }
-            if(curr->right){
-                q.push({col+1,curr->right});
-            }
-        }
-        for(auto node: mp){
-            result.push_back(node.second);
-        }
-        
-        return result;
-    }

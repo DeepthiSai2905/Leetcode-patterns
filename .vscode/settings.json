@@ -7,6 +7,14 @@
         "vector": "cpp",
         "bitset": "cpp",
         "__hash_table": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "__locale": "cpp",
+        "__bit_reference": "cpp",
+        "__split_buffer": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "iterator": "cpp",
+        "string": "cpp",
+        "string_view": "cpp"
     }
 }
